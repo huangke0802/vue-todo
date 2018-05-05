@@ -35,8 +35,17 @@ if (isDev) {
           {
             test: /\.styl/,
             use: [
-              "style-loader",
+              "vue-style-loader",
               "css-loader",
+              /* {
+                loader: "css-loader",
+                options: {
+                  module: true,
+                  localIdentName: isDev
+                    ? "[path]-[name]-[hash:base64:5]"
+                    : "[hash:base64:5]"
+                }
+              }, */ 
               {
                 loader: "postcss-loader",
                 options: {
@@ -49,11 +58,10 @@ if (isDev) {
         ]
       },
       devServer,
-      plugins:
-        defaultPlugins.concat([
-          new webpack.HotModuleReplacementPlugin(),
-          new webpack.NoEmitOnErrorsPlugin()
-        ])
+      plugins: defaultPlugins.concat([
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin()
+      ])
     });
 
 } else {
@@ -70,7 +78,7 @@ if (isDev) {
           {
             test: /\.styl/,
             use: ExtractPlugin.extract({
-              fallback: "style-loader",
+              fallback: "vue-style-loader",
               use: [
                 "css-loader",
                 {

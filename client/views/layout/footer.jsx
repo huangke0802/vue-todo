@@ -1,9 +1,9 @@
-import '../../assets/styles/footer.styl'
+import className  from '../../assets/styles/footer.styl'
 
 export default {
   data() {
     return {
-      author: 'Jokcy'
+      author: 'Kiven Huang'
     }
   },
   render() {

@@ -5,13 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
+    "build": "npm run clean && npm run build:client",
+    "clean": "rimraf dist",
+    "lint" : "eslint --ext .js --ext .jsx --ext .vue client/",
+    "lint-fix" : "eslint --fix --ext .js --ext .jsx --ext .vue client/",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vue": "2.5.13"
+    "eslint": "^4.19.1",
+    "eslint-plugin-html": "^4.0.3",
+    "rimraf": "^2.6.2",
+    "vue": "2.5.13",
+    "vue-style-loader": "^4.1.0"
   },
   "devDependencies": {
     "autoprefixer": "7.2.3",
