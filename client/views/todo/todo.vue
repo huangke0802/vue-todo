@@ -19,6 +19,7 @@
       @toggle="toggleFilter"
       @clearAllCompleted="clearAllCompleted"
     />
+   <!--  <router-view></router-view> -->
   </section>
 </template>
 
@@ -27,6 +28,28 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
+  beforeRouteEnter: (to, from, next) => {  //组件内部的路由的钩子
+    console.log('TODO before enter')
+    //在next() 之前是 拿不到 组件的 this的
+    // next();
+    next(vm =>{  //这里就可以拿到this对象了
+      console.log(vm);
+    })
+  },
+  beforeRouteUpdate: (to, from, next) => {  //组件内部的路由的钩子,只有同一个路由形式 ，参数不同时才会触发  params 变化时触发，根据不同的参数页面数据获取方法写这里
+    console.log('TODO update enter')
+    next();
+  },
+  beforeRouteLeave: (to, from, next) => {  //组件内部的路由的钩子,在用户离开之前确认，点击是才执行next();
+    console.log('TODO leave enter')
+    if(global.confirm("你确定要离开吗？")){
+      next();
+    }
+  },
+  props : ['id'],
+  mounted (){
+    console.log(this.id);
+  },
   data() {
     return {
       todos: [],
