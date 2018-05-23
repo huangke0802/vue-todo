@@ -20,7 +20,9 @@ import Footer from './views/layout/footer.jsx'
 import Todo from './views/todo/todo.vue'
 import {
   mapState,
-  mapGetters
+  mapGetters,
+  mapMutations,
+  mapActions
 } from 'vuex'
 
 export default {
@@ -29,13 +31,26 @@ export default {
     Footer,
     // Todo,
   },
+  methods : {
+    ...mapMutations(['updateCount']),
+    ...mapActions(['updateCountAsync'])
+  },
   mounted () {
     // console.log(this.$route);
     console.log(this.$store)
-    let i = 1;
-    setInterval(() => {
-      this.$store.commit('updateCount', i++)
-    }, 1000);
+    // this.$store.state.count = 3;  //在strict 为 true 时会警告不能直接修改
+     this.updateCount( {
+       num : 10,
+       num2 : 909
+     })
+    // let i = 1;
+    // setInterval(() => {
+    //   this.$store.commit('updateCount', i++)
+    // }, 1000);
+    this.updateCountAsync( {
+      num : 5,
+      time : 2000
+    })
   },
   computed : {
     // ...mapState(['count']),
