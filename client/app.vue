@@ -2,7 +2,10 @@
   <div id="app">
     <div id="cover"></div>
     <Header></Header>
-    <p>{{fullName}} {{counter}}</p>
+    <p>{{fullName}}</p>
+    <!-- <p>{{fullName}} {{counter}}</p> -->
+    <!-- <p>{{textA}}---{{textPlus}}</p> -->
+    <!-- <p>{{textC}}</p> -->
     <!-- <todo></todo> -->
     <router-link to="/app/huangke">app</router-link> <!-- :to='{name : "app"}'   to="/app/123" -->
     <router-link to='/login'>login</router-link>
@@ -32,6 +35,8 @@ export default {
     // Todo,
   },
   methods : {
+    // ...mapMutations(['updateCount', 'a/updateText']),
+    // ...mapActions(['updateCountAsync', 'a/add', 'b/textAction'])
     ...mapMutations(['updateCount']),
     ...mapActions(['updateCountAsync'])
   },
@@ -50,18 +55,29 @@ export default {
     this.updateCountAsync( {
       num : 5,
       time : 2000
-    })
+    });
+    // this['a/updateText']("黄克");
+    // this['a/add']();
+    // this["b/textAction"]();
   },
   computed : {
+    //调用不同store中的模块的方式
+    textA() {
+     return this.$store.state.a.text
+    },
     // ...mapState(['count']),
     ...mapState({
       // counter : 'count'
-      counter : (state) => state.count
+      counter : (state) => state.count,
+      textC : (state) => state.c.text
     }),
     // count () {
     //   return this.$store.state.count;
     // },
-    ...mapGetters(['fullName'])
+    ...mapGetters({
+      fullName : 'fullName',
+      // textPlus : 'a/textPlus'
+    })
     // fullName () {
     //   return this.$store.getters.fullName;
     // }

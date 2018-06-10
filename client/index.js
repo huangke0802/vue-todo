@@ -12,6 +12,13 @@ Vue.use(Vuex)
 const router = createRouter();
 const store = createStore();
 
+//store动态加载模块
+store.registerModule('c', {
+  state : {
+    text : "我是动态加载的模块  3 "
+  }
+})
+
 //路由的守卫，这里的全局的钩子
 router.beforeEach((to, from, next) => {
   console.log('Before each invoked')

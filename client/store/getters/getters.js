@@ -1,5 +1,5 @@
 export default {
     fullName (state) {
-        return `${state.fristName}  ${state.lastName}`
+        return `${state.fristName} 718 ${state.lastName}`
     } 
 }
