@@ -28,6 +28,9 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
+  metaInfo : {
+    title : 'The Todo App'
+  },
   beforeRouteEnter: (to, from, next) => {  //组件内部的路由的钩子
     console.log('TODO before enter')
     //在next() 之前是 拿不到 组件的 this的

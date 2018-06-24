@@ -29,6 +29,9 @@ import {
 } from 'vuex'
 
 export default {
+  metaInfo : {
+    title : "Kevin\'s Todo App"
+  },
   components: {
     Header,
     Footer,

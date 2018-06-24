@@ -7,12 +7,12 @@ export default [
         redirect : '/app'
     },
     {
-        path : '/app/:id',  // app/xxx
+        path : '/app',
+        // path : '/app/:id',  // app/xxx
         props : true,
         // props : {
         //     id : "4657"
         // },
-        // path : '/app',
         // props : (route) => { //http://localhost:8000/app/123?a=huangke&b=ssdfsd
         //     return {id : route.query.b}
         // },
